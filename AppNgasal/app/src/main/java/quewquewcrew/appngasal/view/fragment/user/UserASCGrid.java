@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import quewquewcrew.appngasal.R;
+import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
 /**
@@ -38,7 +39,7 @@ public class UserASCGrid extends Fragment {
         /* setting */
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(),1));
-        adapter.setUsers(User.users);
+        adapter.setLapangans(Lapangan.lapangans);
         rv.setAdapter(adapter);
         return _view;
     }

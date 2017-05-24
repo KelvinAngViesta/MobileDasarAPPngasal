@@ -11,6 +11,7 @@ import android.view.View;
 
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.User;
+import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.adapter.ViewPagerAdapter;
 
@@ -23,6 +24,20 @@ public class MainActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setlapangan
+        Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","MedanBaru","087749068666",100000);
+        lapa.setImg(R.drawable.user);
+        Lapangan.lapangans.add(lapa);
+        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","MedanArea","087749068666",50000);
+        lapb.setImg(R.drawable.lap1);
+        Lapangan.lapangans.add(lapb);
+        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
+        lapc.setImg(R.drawable.logoappngasal);
+        Lapangan.lapangans.add(lapc);
+        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
+        lapd.setImg(R.drawable.logoappngasal);
+        Lapangan.lapangans.add(lapd);
+
 
         User a = new User("STMIK - Mikroskil Medan", "a@mobile.id", "password");
         User b = new User("Kampus A", "b@mobile.id", "password");
@@ -64,7 +79,7 @@ public class MainActivity extends ParentActivity {
         tb.setupWithViewPager(vp);
 //
 //        this.changefragment(new UserASCGrid());
-//        this.setTitle("User");
+          this.setTitle("Lapangan");
     }
 
     @Override

@@ -18,8 +18,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        this.addFragment(new UserASCGrid(), "GRID");
-        this.addFragment(new UserASCGrid(), "GRID");
+        this.addFragment(new UserASCGrid(), "List Lapangan");
+        this.addFragment(new UserASCGrid(), "Filter");
     }
 
     private void addFragment(Fragment fragments, String setTitle) {
