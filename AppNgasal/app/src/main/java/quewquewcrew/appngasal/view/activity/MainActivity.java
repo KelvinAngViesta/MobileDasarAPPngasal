@@ -1,43 +1,57 @@
 package quewquewcrew.appngasal.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.session.SessionManager;
+import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
 import quewquewcrew.appngasal.view.adapter.ViewPagerAdapter;
+import quewquewcrew.appngasal.view.fragment.user.UserASCGrid;
 
 import static quewquewcrew.appngasal.R.id.viewPager;
+import static quewquewcrew.appngasal.model.entity.Lapangan.lapangans;
 
 
-public class MainActivity extends ParentActivity {
-
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setlapangan
+
+
+        lapangans.clear();
         Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","MedanBaru","087749068666",100000);
-        lapa.setImg(R.drawable.user);
-        Lapangan.lapangans.add(lapa);
+        lapa.setImg(R.drawable.lap1);
         Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","MedanArea","087749068666",50000);
         lapb.setImg(R.drawable.lap1);
-        Lapangan.lapangans.add(lapb);
         Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
-        lapc.setImg(R.drawable.logoappngasal);
-        Lapangan.lapangans.add(lapc);
+        lapc.setImg(R.drawable.lap1);
         Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
-        lapd.setImg(R.drawable.logoappngasal);
-        Lapangan.lapangans.add(lapd);
-
+        lapd.setImg(R.drawable.lap1);
+        lapangans.add(lapa);
+        lapangans.add(lapb);
+        lapangans.add(lapc);
+        lapangans.add(lapd);
 
         User a = new User("STMIK - Mikroskil Medan", "a@mobile.id", "password");
         User b = new User("Kampus A", "b@mobile.id", "password");
@@ -70,18 +84,19 @@ public class MainActivity extends ParentActivity {
         }
 
         TabLayout tb = (TabLayout) findViewById(R.id.tabs);
+
         ViewPager vp = (ViewPager) findViewById(viewPager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         vp.setAdapter(adapter);
-//        tb.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorPrimary));
-//        viewPager.setOffscreenPageLimit(2);
-//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tb.setupWithViewPager(vp);
-//
-//        this.changefragment(new UserASCGrid());
+//          this.changefragment(new UserASCGrid());
           this.setTitle("Lapangan");
     }
-
+    public static void doChangeActivity (Context context, Class destination) {
+        Intent _intent = new Intent(context, destination);
+        _intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(_intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -90,10 +105,10 @@ public class MainActivity extends ParentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case R.id.logout:
                 SessionManager.with(getApplicationContext()).clearsession();
-                ParentActivity.doChangeActivity(getApplicationContext(), AuthActivity.class);
+                doChangeActivity(getApplicationContext(), AuthActivity.class);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -108,4 +123,6 @@ public class MainActivity extends ParentActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
     }
+
+
 }

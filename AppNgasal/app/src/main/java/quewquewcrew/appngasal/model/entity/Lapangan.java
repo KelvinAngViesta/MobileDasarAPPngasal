@@ -19,20 +19,14 @@ public class Lapangan implements Serializable{
     private String notel;
     private int img;
     public int harga;
-    public static int _idLap = 1;
 
     public static ArrayList<Lapangan> lapangans = new ArrayList<>();
-    public Lapangan(){
-
-    }
     public Lapangan(String namalapan, String alamat, String kecamatan,String notel,int harga) {
         this.namalapan = namalapan;
         this.alamat = alamat;
         this.kecamatan = kecamatan;
         this.notel = notel;
         this.harga = harga;
-        this.idLap = _idLap;
-        _idLap++;
     }
     public int getIdLap() {
         return idLap;

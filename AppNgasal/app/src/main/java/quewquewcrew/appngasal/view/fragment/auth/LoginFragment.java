@@ -13,10 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import quewquewcrew.appngasal.R;
+import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.activity.AuthActivity;
 import quewquewcrew.appngasal.view.activity.MainActivity;
+import quewquewcrew.appngasal.view.activity.ParentActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,11 +71,15 @@ public class LoginFragment extends Fragment {
                 boolean _isvalid = true;
                 emailcontainer.setErrorEnabled(false);
                 passwordcontainer.setErrorEnabled(false);
-
-                /*
-                * checking data validation
-                * front-end
-                */
+                User user = new User();
+                boolean _isemailexist = false;
+                for (int i=0;i<User.users.size();i++) {
+                    if (User.users.get(i).getEmail().equals(email.getText().toString())) {
+                        _isemailexist = true;
+                        user = User.users.get(i);
+                        break;
+                    }
+                }
                 if (TextUtils.isEmpty(email.getText())) {
                     _isvalid = false;
                     emailcontainer.setErrorEnabled(true);
@@ -82,43 +88,29 @@ public class LoginFragment extends Fragment {
                     _isvalid = false;
                     emailcontainer.setErrorEnabled(true);
                     emailcontainer.setError("Email is not valid");
-                } else if (TextUtils.isEmpty(password.getText())) {
+                } else if (!_isemailexist) {
+                    emailcontainer.setErrorEnabled(true);
+                    emailcontainer.setError("Email is not registered.");
                     _isvalid = false;
+                }
+                else if (TextUtils.isEmpty(password.getText())) {
+
                     passwordcontainer.setErrorEnabled(true);
                     passwordcontainer.setError("Password is required");
+                    _isvalid = false;
+                }
+                else if (!user.getPassword().equals(password.getText().toString())) {
+                    passwordcontainer.setErrorEnabled(true);
+                    passwordcontainer.setError("Password is incorrect.");
+                    _isvalid = false;
                 }
 
-                /*
-                * check the account
-                * back-end
-                */
                 if (_isvalid) {
-                    Boolean _isregistered = false, _ismatch = false;
-                    User _user = new User();
-                    for (User item : User.users) {
-                        if (item.getEmail().equals(email.getText().toString())) {
-                            if (item.getPassword().equals(password.getText().toString())) {
-                                _ismatch = true;
-                                _user = item;
-                            }
-                            _isregistered = true;
-                            break;
-                        }
-                    }
-
-                    if (!_isregistered) {
-                        emailcontainer.setErrorEnabled(true);
-                        emailcontainer.setError("Email is not registered as a user.");
-                    } else if (!_ismatch) {
-                        passwordcontainer.setErrorEnabled(true);
-                        passwordcontainer.setError("Password is wrong.");
-                    }
-
-                    if (_isregistered && _ismatch) {
-                        SessionManager.with(getContext()).createsession(_user);
-                        ((AuthActivity) getActivity()).doChangeActivity(getContext(), MainActivity.class);
-                    }
+                    SessionManager sessionManager = SessionManager.with(getContext());
+                    sessionManager.createsession(user);
+                    ParentActivity.doChangeActivity(getContext(), MainActivity.class);
                 }
+
             }
         });
     }

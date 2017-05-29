@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_margin="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_marginRight="8dp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_margin="8dp"
             android:padding="8dp"
-            android:id="@+id/item.user.grid.image"
+            android:id="@+id/item.user.imageLG"
             android:src="@drawable/user"
-            android:layout_height="80dp" />
+            android:layout_height="70dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="vertical"
             android:padding="8dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginBottom="32sp"
-                android:id="@+id/item.user.grid.name"
+                android:textSize="13sp"
+                android:layout_marginBottom="10sp"
+                android:id="@+id/item.users.nameLG"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:text="Your Name"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
-                android:gravity="center"
-                android:id="@+id/item.user.grid.email"
+                android:gravity="bottom|center_horizontal"
+                android:id="@+id/item.user.emailLG"
                 android:text="Your Email"/>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
