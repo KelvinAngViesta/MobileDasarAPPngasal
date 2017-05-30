@@ -34,9 +34,17 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Your Name"
+                android:text="Nama Lapangan"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/item.lapang.grid.kecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:text="Kecamatan"
+                android:textSize="12sp"
+                />
 
         </LinearLayout>
         <LinearLayout

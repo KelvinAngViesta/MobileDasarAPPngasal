@@ -25,7 +25,6 @@ import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
-import quewquewcrew.appngasal.view.adapter.ViewPagerAdapter;
 import quewquewcrew.appngasal.view.fragment.user.UserASCGrid;
 
 import static quewquewcrew.appngasal.R.id.viewPager;
@@ -37,21 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        lapangans.clear();
-        Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","MedanBaru","087749068666",100000);
-        lapa.setImg(R.drawable.lap1);
-        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","MedanArea","087749068666",50000);
-        lapb.setImg(R.drawable.lap1);
-        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
-        lapc.setImg(R.drawable.lap1);
-        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
-        lapd.setImg(R.drawable.lap1);
-        lapangans.add(lapa);
-        lapangans.add(lapb);
-        lapangans.add(lapc);
-        lapangans.add(lapd);
 
         User a = new User("STMIK - Mikroskil Medan", "a@mobile.id", "password");
         User b = new User("Kampus A", "b@mobile.id", "password");
@@ -83,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
             this.doChangeActivity(getApplicationContext(), AuthActivity.class);
         }
 
-        TabLayout tb = (TabLayout) findViewById(R.id.tabs);
-
-        ViewPager vp = (ViewPager) findViewById(viewPager);
-        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        vp.setAdapter(adapter);
-        tb.setupWithViewPager(vp);
-//          this.changefragment(new UserASCGrid());
+//        TabLayout tb = (TabLayout) findViewById(R.id.tabs);
+//
+//        ViewPager vp = (ViewPager) findViewById(viewPager);
+//        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+//        vp.setAdapter(adapter);
+//        tb.setupWithViewPager(vp);
+         this.changefragment(new UserASCGrid());
           this.setTitle("Lapangan");
     }
     public static void doChangeActivity (Context context, Class destination) {

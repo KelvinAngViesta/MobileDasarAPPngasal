@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.view.activity.DetailLapangan;
@@ -19,6 +21,7 @@ import quewquewcrew.appngasal.view.activity.DetailLapangan;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.StringTokenizer;
 
 /**
  * Created by User on 4/10/2017.
@@ -59,18 +62,25 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         _holder.image.setImageResource(_lapang.getImg());
         _holder.name.setText(_lapang.getNameLap());
         _holder.harga.setText(String.valueOf(_lapang.getHarga()));
+        _holder.namalap.setText(String.valueOf(_lapang.getKecamatan()));
         ///Search
         Lapangan txt = lapangans.get(position);
         String nama = txt.getNameLap().toLowerCase(Locale.getDefault());
+        String namalap = txt.getNameLap().toLowerCase(Locale.getDefault());
         if (nama.contains(srch)) {
 
             int startPos = nama.indexOf(srch);
+            int startPost = namalap.indexOf(srch);
+            int endPost = startPost + srch.length();
             int endPos = startPos + srch.length();
 
+            Spannable spanStrings = Spannable.Factory.getInstance().newSpannable(_holder.namalap.getText());
+            spanStrings.setSpan(new ForegroundColorSpan(Color.RED),startPost,endPost,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             Spannable spanString = Spannable.Factory.getInstance().newSpannable(_holder.name.getText());
             spanString.setSpan(new ForegroundColorSpan(Color.RED), startPos, endPos, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             _holder.name.setText(spanString);
+            _holder.namalap.setText(spanStrings);
         }
 
         //Click Items
@@ -90,17 +100,19 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private class ItemUserViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
-        private TextView name, harga;
+        private TextView name, harga,namalap;
 
         public ItemUserViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.item_lapang_grid_image);
             name = (TextView) itemView.findViewById(R.id.item_lapang_grid_name);
+            namalap = (TextView) itemView.findViewById(R.id.item_lapang_grid_kecamatan);
             harga = (TextView) itemView.findViewById(R.id.item_lapang_grid_harga);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
                     String nama = name.getText().toString();
+                    String namalaps = namalap.getText().toString();
                 }
             });
         }

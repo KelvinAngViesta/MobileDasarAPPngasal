@@ -28,7 +28,6 @@ import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.activity.AuthActivity;
 import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
-import quewquewcrew.appngasal.view.adapter.ViewPagerAdapter;
 
 import static quewquewcrew.appngasal.R.id.viewPager;
 import static quewquewcrew.appngasal.model.entity.Lapangan.lapangans;
@@ -51,13 +50,13 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
 
 
         lapangans.clear();
-        Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","MedanBaru","087749068666",100000);
+        Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","Baru","087749068666",100000);
         lapa.setImg(R.drawable.lap1);
-        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","MedanArea","087749068666",50000);
+        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","Area","087749068666",50000);
         lapb.setImg(R.drawable.lap1);
-        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
+        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","Helvetia","087749068666",100000);
         lapc.setImg(R.drawable.lap1);
-        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","MedanBaru","087749068666",100000);
+        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","Sunggal","087749068666",100000);
         lapd.setImg(R.drawable.lap1);
         lapangans.add(lapa);
         lapangans.add(lapb);
@@ -110,7 +109,11 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
         final List<Lapangan> filteredModelList = new ArrayList<>();
         for (Lapangan model : models) {
             final String text = model.getNameLap().toLowerCase();
+            final String texts = model.getKecamatan().toLowerCase();
             if (text.contains(query)) {
+                filteredModelList.add(model);
+            }
+            else if(texts.contains(query)){
                 filteredModelList.add(model);
             }
         }
@@ -130,7 +133,7 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
 
         TextView searchText = (TextView)
                 searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-        searchText.setHint("Search Lapangan...");
+        searchText.setHint("Search Lapangan Atau Kecamatan...");
         searchView.setOnQueryTextListener(this);
 
         super.onCreateOptionsMenu(menu, inflater);
