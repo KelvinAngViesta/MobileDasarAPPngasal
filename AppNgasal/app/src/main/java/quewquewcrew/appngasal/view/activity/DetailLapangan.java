@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -26,7 +28,7 @@ import quewquewcrew.appngasal.model.entity.Lapangan;
 
 public class DetailLapangan extends AppCompatActivity implements View.OnClickListener {
 
-    Button btndate,btntimestart,btntimestop;
+    Button btndate,btntimestart,btntimestop,btnbook;
     EditText etextdate,etexttimestart,etexttimestop;
     private int day,month,year,hours,minute;
     private Lapangan lapangs;
@@ -50,6 +52,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         imgViews.setImageResource(lapangs.getImg());
         //btn date
         btndate = (Button)findViewById(R.id.btndate);
+        btnbook = (Button)findViewById(R.id.btnbooking);
         etextdate = (EditText)findViewById(R.id.etextdate);
         etextdate.setFocusable(false);
         //btn time start
@@ -61,9 +64,12 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         etexttimestop = (EditText) findViewById(R.id.etexttimestop);
         etexttimestop.setFocusable(false);
 
+        btnbook.setOnClickListener(this);
         btndate.setOnClickListener(this);
         btntimestop.setOnClickListener(this);
         btntimestart.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -97,7 +103,6 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     etextdate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-
                 }
             }
                     , day, month, year);
@@ -132,12 +137,43 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
             }, hours, minute, true);
             timepickerdialog.show();
         }
+
     }
-//    public void convertTime()
-//    {
-//        return
-//    }
-//
+
+
+    private void event()
+    {
+        btnbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(DetailLapangan.this, ConvertTime(etexttimestop),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public static int toSecond(String s)
+    {
+        String[] Waktu = s.split(":");
+        int jam = Integer.parseInt(Waktu[0]);
+        int menit = Integer.parseInt(Waktu[1]);
+        int Jamkedetik = jam * 3600;
+        int Menitkedetik = menit * 60;
+        return Jamkedetik + Menitkedetik;
+    }
+
+    public static int toHour(String s) {
+        String waktu = s;
+        int detik = Integer.parseInt(waktu);
+        return detik / 3600;
+    }
+
+    public int ConvertTime(EditText s)
+    {
+        int waktu;
+        waktu = toSecond(s.toString());
+        return waktu;
+    }
+
 
 
 }
