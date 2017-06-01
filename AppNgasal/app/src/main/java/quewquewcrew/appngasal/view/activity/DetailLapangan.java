@@ -26,8 +26,8 @@ import quewquewcrew.appngasal.model.entity.Lapangan;
 
 public class DetailLapangan extends AppCompatActivity implements View.OnClickListener {
 
-    Button btndate,btntime;
-    EditText etextdate,etexttime;
+    Button btndate,btntimestart,btntimestop;
+    EditText etextdate,etexttimestart,etexttimestop;
     private int day,month,year,hours,minute;
     private Lapangan lapangs;
     @Override
@@ -48,12 +48,22 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         harga.setText(String.valueOf(lapangs.getHarga()));
         ImageView imgViews = (ImageView) findViewById(R.id.item_lapang_grid_image);
         imgViews.setImageResource(lapangs.getImg());
+        //btn date
         btndate = (Button)findViewById(R.id.btndate);
         etextdate = (EditText)findViewById(R.id.etextdate);
-        btntime = (Button)findViewById(R.id.btntime);
-        etexttime = (EditText) findViewById(R.id.etexttime);
+        etextdate.setFocusable(false);
+        //btn time start
+        btntimestart = (Button)findViewById(R.id.btntimestrat);
+        etexttimestart= (EditText) findViewById(R.id.etexttimestart);
+        etexttimestart.setFocusable(false);
+        //btn time stop
+        btntimestop = (Button) findViewById(R.id.btntimestop);
+        etexttimestop = (EditText) findViewById(R.id.etexttimestop);
+        etexttimestop.setFocusable(false);
+
         btndate.setOnClickListener(this);
-        btntime.setOnClickListener(this);
+        btntimestop.setOnClickListener(this);
+        btntimestart.setOnClickListener(this);
     }
 
     @Override
@@ -78,36 +88,56 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
-        if(v==btndate){
+        if (v == btndate) {
             final Calendar calender = Calendar.getInstance();
-            day =calender.get(Calendar.DAY_OF_MONTH);
+            day = calender.get(Calendar.DAY_OF_MONTH);
             month = calender.get(Calendar.MONTH);
             year = calender.get(Calendar.YEAR);
             DatePickerDialog datepickerdialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    etextdate.setText(dayOfMonth + "/" + (month+1) + "/" + year );
+                    etextdate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
 
                 }
             }
-            ,day,month,year);
+                    , day, month, year);
             datepickerdialog.show();
         }
-        if(v==btntime){
+        if (v == btntimestart) {
             final Calendar calendar = Calendar.getInstance();
             hours = calendar.get(calendar.HOUR_OF_DAY);
             minute = calendar.get(calendar.MINUTE);
+
             TimePickerDialog timepickerdialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    etexttime.setText(hourOfDay + ":" + minute);
+                    etexttimestart.setText(hourOfDay + ":" + minute);
 
                 }
-            },hours,minute ,false);
+            }, hours, minute, true);
+            timepickerdialog.show();
+        }
+
+        if (v == btntimestop) {
+            final Calendar calendar = Calendar.getInstance();
+            hours = calendar.get(calendar.HOUR_OF_DAY);
+            minute = calendar.get(calendar.MINUTE);
+
+            TimePickerDialog timepickerdialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    etexttimestop.setText(hourOfDay + ":" + minute);
+
+                }
+            }, hours, minute, true);
             timepickerdialog.show();
         }
     }
-
+//    public void convertTime()
+//    {
+//        return
+//    }
+//
 
 
 }

@@ -29,7 +29,7 @@ import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.activity.AuthActivity;
 import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
 
-import static quewquewcrew.appngasal.R.id.viewPager;
+import static quewquewcrew.appngasal.model.entity.User.users;
 import static quewquewcrew.appngasal.model.entity.Lapangan.lapangans;
 
 /**
@@ -62,6 +62,12 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
         lapangans.add(lapb);
         lapangans.add(lapc);
         lapangans.add(lapd);
+
+
+        User usera = new User("ucok","a@mobile.id","password");
+        users.add(usera);
+        User userb = new User("palak","b@mobile.id","password");
+        users.add(userb);
 
 
         context=getActivity();

@@ -114,8 +114,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-8dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -124,7 +125,7 @@
 
                     <Button
                         android:id="@+id/btndate"
-                        android:layout_width="120dp"
+                        android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:text="Date" />
 
@@ -139,34 +140,46 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/btntime"
-                        android:layout_width="120dp"
+                        android:id="@+id/btntimestrat"
+                        android:layout_width="115dp"
                         android:layout_height="wrap_content"
-                        android:text="Time" />
+                        android:text="Time Start" />
 
                     <EditText
-                        android:id="@+id/etexttime"
+                        android:id="@+id/etexttimestart"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btntimestop"
+                        android:layout_width="115dp"
+                        android:layout_height="wrap_content"
+                        android:text="Time Stop" />
+
+                    <EditText
+                        android:id="@+id/etexttimestop"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginTop="-10dp"
-                android:gravity="right"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="130dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="220dp"
-                    android:text="Booking"
-                    android:textAlignment="center" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnbooking"
+                android:layout_marginLeft="195dp"
+                android:layout_width="150dp"
+                android:text="Booking"
+                android:layout_height="wrap_content" />
         </LinearLayout>
+
+
+        </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

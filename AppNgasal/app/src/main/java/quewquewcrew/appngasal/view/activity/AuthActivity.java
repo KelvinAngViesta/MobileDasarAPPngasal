@@ -1,21 +1,28 @@
 package quewquewcrew.appngasal.view.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.ActionMode;
+import android.view.Window;
 
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.view.fragment.auth.LoginFragment;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AuthActivity extends ParentActivity {
+public class AuthActivity extends ParentActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
         changefragment(new LoginFragment());
-        this.setTitle("Authentication");
     }
 
     public static boolean isemailvalid(String email) {

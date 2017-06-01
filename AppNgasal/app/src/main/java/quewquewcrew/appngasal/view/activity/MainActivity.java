@@ -3,10 +3,13 @@ package quewquewcrew.appngasal.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,42 +28,23 @@ import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.adapter.UserGridARVAdapter;
+import quewquewcrew.appngasal.view.fragment.auth.Wallet;
+import quewquewcrew.appngasal.view.fragment.auth.topup;
 import quewquewcrew.appngasal.view.fragment.user.UserASCGrid;
 
-import static quewquewcrew.appngasal.R.id.viewPager;
+import static android.R.attr.fragment;
+import static android.R.attr.theme;
 import static quewquewcrew.appngasal.model.entity.Lapangan.lapangans;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ParentActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User a = new User("STMIK - Mikroskil Medan", "a@mobile.id", "password");
-        User b = new User("Kampus A", "b@mobile.id", "password");
-        User c = new User("Kampus B", "c@mobile.id", "password");
-        User d = new User("Kampus C", "d@mobile.id", "password");
-        User e = new User("Kampus D - Thamrin Plaza", "e@mobile.id", "password");
-        User f = new User("f", "f@mobile.id", "password");
-        User g = new User("g", "g@mobile.id", "password");
-        User h = new User("h", "h@mobile.id", "password");
-        User i = new User("i", "i@mobile.id", "password");
-        User j = new User("j", "j@mobile.id", "password");
-        User k = new User("k", "k@mobile.id", "password");
-        User l = new User("l", "l@mobile.id", "password");
-        User.users.add(a);
-        User.users.add(b);
-        User.users.add(c);
-        User.users.add(d);
-        User.users.add(e);
-        User.users.add(f);
-        User.users.add(g);
-        User.users.add(h);
-        User.users.add(i);
-        User.users.add(j);
-        User.users.add(k);
-        User.users.add(l);
+
 
          /* checking the session */
         if (!SessionManager.with(getApplicationContext()).isuserlogin()) {
@@ -74,12 +58,7 @@ public class MainActivity extends AppCompatActivity {
 //        vp.setAdapter(adapter);
 //        tb.setupWithViewPager(vp);
          this.changefragment(new UserASCGrid());
-          this.setTitle("Lapangan");
-    }
-    public static void doChangeActivity (Context context, Class destination) {
-        Intent _intent = new Intent(context, destination);
-        _intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(_intent);
+//          this.setTitle("Lapangan");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,17 +68,39 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.logout:
-                SessionManager.with(getApplicationContext()).clearsession();
-                doChangeActivity(getApplicationContext(), AuthActivity.class);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if(id==R.id.topup)
+        {
+            changefragment(new topup());
         }
+        else if(id== R.id.Wallet)
+        {
+            changefragment(new Wallet());
+        }
+        else if(id== R.id.logout)
+        {
+            SessionManager.with(getApplicationContext()).clearsession();
+            doChangeActivity(getApplicationContext(), AuthActivity.class);
+        }
+//        switch (item.getItemId()){
+//
+//            case R.id.topup:
+//                this.doChangeActivity(getApplicationContext(), MainActivity.class);
+//                changefragment(new topup());
+//
+//            case R.id.Wallet:
+//                this.doChangeActivity(getApplicationContext(), MainActivity.class);
+//                changefragment(new Wallet());
+//            case R.id.logout:
+//
+//                SessionManager.with(getApplicationContext()).clearsession();
+//                doChangeActivity(getApplicationContext(), AuthActivity.class);
+//                break;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
         return true;
     }
-
     public void changefragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).commit();
     }
@@ -107,6 +108,6 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
     }
-
-
 }
+
+

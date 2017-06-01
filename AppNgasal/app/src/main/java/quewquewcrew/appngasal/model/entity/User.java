@@ -14,6 +14,7 @@ public class User {
     private String email;
     private String bio;
     private String password;
+    private int wallet;
 
     public static int _id = 1;
 
@@ -65,4 +66,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getWallet(){return wallet;}
+    public void setWallet(int wallet){this.wallet = wallet;}
 }
