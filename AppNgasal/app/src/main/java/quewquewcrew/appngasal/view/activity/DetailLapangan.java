@@ -64,10 +64,20 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         etexttimestop = (EditText) findViewById(R.id.etexttimestop);
         etexttimestop.setFocusable(false);
 
+
         btnbook.setOnClickListener(this);
         btndate.setOnClickListener(this);
         btntimestop.setOnClickListener(this);
         btntimestart.setOnClickListener(this);
+        if(etexttimestart.getText().toString().matches("") || etexttimestop.getText().toString().matches(""))
+        {
+            btnbook.setEnabled(false);
+        }
+        else
+        {
+            btnbook.setEnabled(true);
+            event();
+        }
 
 
     }
@@ -106,6 +116,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                 }
             }
                     , day, month, year);
+
             datepickerdialog.show();
         }
         if (v == btntimestart) {
@@ -146,8 +157,16 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailLapangan.this, ConvertTime(etexttimestop),Toast.LENGTH_LONG).show();
+                 if(ConvertTime(etexttimestart.getText().toString()) > ConvertTime(etexttimestop.getText().toString()))
+                 {
+                     btnbook.setEnabled(false);
+                 }
+                 else
+                 {
+                     Toast.makeText(DetailLapangan.this,"Udah bisa next bro",Toast.LENGTH_LONG).show();
+                 }
             }
+
         });
     }
 
@@ -167,13 +186,12 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         return detik / 3600;
     }
 
-    public int ConvertTime(EditText s)
+    public int ConvertTime(String s)
     {
         int waktu;
-        waktu = toSecond(s.toString());
+        waktu = toSecond(s);
         return waktu;
     }
-
 
 
 }
