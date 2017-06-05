@@ -19,7 +19,6 @@ public class Lapangan implements Serializable{
     private String notel;
     private int img;
     public int harga;
-
     public static ArrayList<Lapangan> lapangans = new ArrayList<>();
     public Lapangan(String namalapan, String alamat, String kecamatan,String notel,int harga) {
         this.namalapan = namalapan;

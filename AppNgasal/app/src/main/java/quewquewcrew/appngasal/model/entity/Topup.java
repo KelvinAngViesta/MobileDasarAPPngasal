@@ -5,4 +5,18 @@ package quewquewcrew.appngasal.model.entity;
  */
 
 public class Topup {
+    private int topup;
+    public Topup()
+    {
+
+    }
+
+    public int getTopup() {
+        return topup;
+    }
+
+    public void setTopup(int name) {
+        this.topup = topup;
+    }
+
 }

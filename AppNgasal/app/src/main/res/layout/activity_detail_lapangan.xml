@@ -126,8 +126,12 @@
                     <Button
                         android:id="@+id/btndate"
                         android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:text="Date" />
+                        android:layout_height="40dp"
+                        android:text="Date"
+                        android:background="#dea717"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginBottom="4dp"
+                        />
 
                     <EditText
                         android:id="@+id/etextdate"
@@ -142,8 +146,11 @@
                     <Button
                         android:id="@+id/btntimestrat"
                         android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:text="Time Start" />
+                        android:layout_height="40dp"
+                        android:text="Time Start"
+                        android:layout_marginBottom="4dp"
+                        android:background="#dea717"
+                        android:textColor="#FFFFFF"/>
 
                     <EditText
                         android:id="@+id/etexttimestart"
@@ -157,8 +164,10 @@
                     <Button
                         android:id="@+id/btntimestop"
                         android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:text="Time Stop" />
+                        android:layout_height="40dp"
+                        android:text="Time Stop"
+                        android:background="#dea717"
+                        android:textColor="#FFFFFF"/>
 
                     <EditText
                         android:id="@+id/etexttimestop"
@@ -174,6 +183,8 @@
                 android:id="@+id/btnbooking"
                 android:layout_marginLeft="195dp"
                 android:layout_width="150dp"
+                android:background="#dea717"
+                android:textColor="#FFFFFF"
                 android:text="Booking"
                 android:layout_height="wrap_content" />
         </LinearLayout>

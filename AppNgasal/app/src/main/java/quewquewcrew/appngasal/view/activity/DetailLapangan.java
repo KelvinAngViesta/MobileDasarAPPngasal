@@ -2,6 +2,8 @@ package quewquewcrew.appngasal.view.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.icu.text.DateFormat;
 import android.icu.util.Calendar;
 import android.media.Image;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,14 +26,17 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 
 public class DetailLapangan extends AppCompatActivity implements View.OnClickListener {
 
-    Button btndate,btntimestart,btntimestop,btnbook;
-    EditText etextdate,etexttimestart,etexttimestop;
-    private int day,month,year,hours,minute;
+    Button btndate, btntimestart, btntimestop, btnbook;
+    EditText etextdate, etexttimestart, etexttimestop;
+    private int day, month, year, hours, minute;
     private Lapangan lapangs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +54,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         noHp.setText(lapangs.getNotel());
         TextView harga = (TextView)findViewById(R.id.item_lapang_grid_harga);
         harga.setText(String.valueOf(lapangs.getHarga()));
-        ImageView imgViews = (ImageView) findViewById(R.id.item_lapang_grid_image);
-        imgViews.setImageResource(lapangs.getImg());
+
         //btn date
         btndate = (Button)findViewById(R.id.btndate);
         btnbook = (Button)findViewById(R.id.btnbooking);
@@ -69,17 +74,11 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         btndate.setOnClickListener(this);
         btntimestop.setOnClickListener(this);
         btntimestart.setOnClickListener(this);
-        if(etexttimestart.getText().toString().matches("") || etexttimestop.getText().toString().matches(""))
-        {
-            btnbook.setEnabled(false);
-        }
-        else
-        {
-            btnbook.setEnabled(true);
-            event();
-        }
+        event();
 
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -148,12 +147,21 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
             }, hours, minute, true);
             timepickerdialog.show();
         }
+        if(etexttimestart.getText().toString().matches("") || etexttimestop.getText().toString().matches(""))
+        {
+            btnbook.setEnabled(false);
+        }
+        else
+        {
+            btnbook.setEnabled(true);
+
+        }
 
     }
 
-
     private void event()
     {
+
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +171,10 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                  }
                  else
                  {
-                     Toast.makeText(DetailLapangan.this,"Udah bisa next bro",Toast.LENGTH_LONG).show();
+                     Intent _intent = new Intent(view.getContext(),Komfirmasi.class);
+                     _intent.putExtra("Lapangan",lapangs);
+                     Toast.makeText(DetailLapangan.this,"next time",Toast.LENGTH_LONG).show();
+                     view.getContext().startActivity(_intent);
                  }
             }
 
@@ -192,6 +203,10 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         waktu = toSecond(s);
         return waktu;
     }
-
+    public static void doChangeActivity (Context context, Class destination) {
+        Intent _intent = new Intent(context, destination);
+        _intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(_intent);
+    }
 
 }

@@ -17,11 +17,11 @@ import org.w3c.dom.Text;
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.view.activity.DetailLapangan;
+import quewquewcrew.appngasal.view.activity.Komfirmasi;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.StringTokenizer;
 
 /**
  * Created by User on 4/10/2017.
@@ -87,7 +87,7 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         _holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent _intent = new Intent(v.getContext(), DetailLapangan.class);
+                Intent _intent = new Intent(v.getContext(), DetailLapangan.class);;
                 _intent.putExtra("Lapangan", _lapang);
                 v.getContext().startActivity(_intent);
             }

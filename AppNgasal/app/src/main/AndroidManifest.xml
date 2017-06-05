@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".view.activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity">
-
-        </activity>
-        <activity android:name=".view.activity.AuthActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+        <activity android:name=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.AuthActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.activity.DetailLapangan" />
+        <activity android:name=".view.activity.Komfirmasi" />
+        <activity android:name=".view.activity.Topup"></activity>
     </application>
 
 </manifest>
