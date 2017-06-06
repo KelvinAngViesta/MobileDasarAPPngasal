@@ -147,15 +147,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
             }, hours, minute, true);
             timepickerdialog.show();
         }
-        if(etexttimestart.getText().toString().matches("") || etexttimestop.getText().toString().matches(""))
-        {
-            btnbook.setEnabled(false);
-        }
-        else
-        {
-            btnbook.setEnabled(true);
 
-        }
 
     }
 
@@ -165,14 +157,27 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 if(ConvertTime(etexttimestart.getText().toString()) > ConvertTime(etexttimestop.getText().toString()))
-                 {
-                     btnbook.setEnabled(false);
-                 }
+
+                if(etextdate.getText().toString().matches(""))
+                {
+                    Toast.makeText(DetailLapangan.this,"Date Yang Dipilih tidak boleh kosong",Toast.LENGTH_LONG).show();
+                }
+                else if (etexttimestart.getText().toString().matches("") || etexttimestop.getText().toString().matches(""))
+                {
+                    Toast.makeText(DetailLapangan.this, "Waktu yang dipilih tidak boleh kosong", Toast.LENGTH_SHORT).show();
+                }
+                else if(ConvertTime(etexttimestart.getText().toString()) >= ConvertTime(etexttimestop.getText().toString()))
+                {
+                    Toast.makeText(DetailLapangan.this,"Jam Yang Dipilih tidak sesuai",Toast.LENGTH_LONG).show();
+                }
                  else
                  {
+                     String tanggal = etextdate.getText().toString();
+                     float jam = toHour(ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString()));
                      Intent _intent = new Intent(view.getContext(),Komfirmasi.class);
                      _intent.putExtra("Lapangan",lapangs);
+                     _intent.putExtra("Tanggal",tanggal);
+                     _intent.putExtra("Jam", jam);
                      Toast.makeText(DetailLapangan.this,"next time",Toast.LENGTH_LONG).show();
                      view.getContext().startActivity(_intent);
                  }
@@ -191,10 +196,10 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         return Jamkedetik + Menitkedetik;
     }
 
-    public static int toHour(String s) {
-        String waktu = s;
-        int detik = Integer.parseInt(waktu);
-        return detik / 3600;
+    public static float toHour(int s) {
+
+        int detik = s;
+        return (float)detik / 3600;
     }
 
     public int ConvertTime(String s)

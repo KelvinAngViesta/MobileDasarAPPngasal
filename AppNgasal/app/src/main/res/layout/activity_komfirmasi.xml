@@ -74,6 +74,7 @@
             android:layout_marginTop="5dp"
             >
             <TextView
+                android:id="@+id/id_tanggal_booking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -81,6 +82,7 @@
                 android:text="TANGGAL BOOKING"
                 android:layout_marginBottom="5dp"/>
             <TextView
+                android:id="@+id/id_waktu_booking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="WAKTU BOOKING"
@@ -100,6 +102,7 @@
                     android:text="RP."
                     />
                 <TextView
+                    android:id="@+id/id_total_harga"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="TOTAL HARGA"
