@@ -170,14 +170,20 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                 {
                     Toast.makeText(DetailLapangan.this,"Jam Yang Dipilih tidak sesuai",Toast.LENGTH_LONG).show();
                 }
+                else if(((ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString())))%3600 !=0)
+                {
+                    Toast.makeText(DetailLapangan.this,"Jam Yang Dipilih tidak sesuai",Toast.LENGTH_LONG).show();
+                }
                  else
                  {
                      String tanggal = etextdate.getText().toString();
                      float jam = toHour(ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString()));
+
                      Intent _intent = new Intent(view.getContext(),Komfirmasi.class);
                      _intent.putExtra("Lapangan",lapangs);
                      _intent.putExtra("Tanggal",tanggal);
                      _intent.putExtra("Jam", jam);
+
                      Toast.makeText(DetailLapangan.this,"next time",Toast.LENGTH_LONG).show();
                      view.getContext().startActivity(_intent);
                  }

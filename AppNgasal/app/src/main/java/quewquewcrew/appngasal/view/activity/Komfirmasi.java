@@ -33,17 +33,14 @@ public class Komfirmasi extends AppCompatActivity {
         tanggal.setText(i.getExtras().getString("Tanggal"));
 
         float waktu = i.getFloatExtra("Jam",0f);
-
         TextView waktu1 = (TextView)findViewById(R.id.id_waktu_booking);
-
         waktu1.setText(String.valueOf(waktu)+" " + "JAM");
 
         int hargalap = lapang.getHarga();
-
         double total = waktu * hargalap;
+
         TextView harga = (TextView) findViewById(R.id.id_total_harga);
         harga.setText(String.valueOf(total));
-
         TextView namalapang = (TextView) findViewById(R.id.item_lapang_grid_name);
         namalapang.setText(lapang.getNameLap());
     }
