@@ -45,6 +45,10 @@ public class MainActivity extends ParentActivity {
         {
             doChangeActivity(getApplicationContext(),MainActivity.class);
         }
+        else if(id == R.id.Wallet)
+        {
+            doChangeActivity(getApplicationContext(),Wallet.class);
+        }
         else if(id== R.id.logout)
         {
             SessionManager.with(getApplicationContext()).clearsession();

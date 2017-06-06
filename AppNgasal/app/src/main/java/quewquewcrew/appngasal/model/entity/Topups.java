@@ -1,12 +1,12 @@
 package quewquewcrew.appngasal.model.entity;
 
 /**
- * Created by User on 5/31/2017.
+ * Created by User on 6/6/2017.
  */
 
-public class Topup {
+public class Topups {
     private int topup;
-    public Topup()
+    public Topups()
     {
 
     }
@@ -15,8 +15,7 @@ public class Topup {
         return topup;
     }
 
-    public void setTopup(int name) {
+    public void setTopup(int topup) {
         this.topup = topup;
     }
-
 }

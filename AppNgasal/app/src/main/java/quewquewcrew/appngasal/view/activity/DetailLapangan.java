@@ -172,7 +172,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                 }
                 else if(((ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString())))%3600 !=0)
                 {
-                    Toast.makeText(DetailLapangan.this,"Jam Yang Dipilih tidak sesuai",Toast.LENGTH_LONG).show();
+                    Toast.makeText(DetailLapangan.this,"Harus Kelipatan 1Jam ",Toast.LENGTH_LONG).show();
                 }
                  else
                  {
@@ -213,11 +213,6 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         int waktu;
         waktu = toSecond(s);
         return waktu;
-    }
-    public static void doChangeActivity (Context context, Class destination) {
-        Intent _intent = new Intent(context, destination);
-        _intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(_intent);
     }
 
 }

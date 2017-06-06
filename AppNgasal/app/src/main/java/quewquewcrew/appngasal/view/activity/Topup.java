@@ -1,6 +1,8 @@
 package quewquewcrew.appngasal.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,10 +14,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import quewquewcrew.appngasal.R;
+import quewquewcrew.appngasal.model.entity.Topups;
+import quewquewcrew.appngasal.model.session.SessionManager;
+import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivity;
 
 public class Topup extends AppCompatActivity {
 
-    public Topup tops;
+    public Topups tops;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +29,8 @@ public class Topup extends AppCompatActivity {
 
 
         createRadioButtons();
-
+        int SavedValue = getTopups(this);
+        Toast.makeText(this,"saved value" + SavedValue,Toast.LENGTH_SHORT).show();
     }
 
     private void createRadioButtons() {
@@ -45,13 +51,66 @@ public class Topup extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(Topup.this,"Click" + numpanel ,Toast.LENGTH_SHORT).show();
-                }});
+                    Intent _intent = new Intent(v.getContext(),Wallet.class);
+                    _intent.putExtra("Topups",numpanel);
+                    v.getContext().startActivity(_intent);
+
+                }
+
+
+            });
 
             //Add to radiogroup:
             group.addView(btn);
+            //Select default button:
+            if(numpanel== getTopups(this))
+            {
+                btn.setChecked(true);
+
+            }
         }
 
     }
 
+    private void savetopup(int numpanel) {
+        SharedPreferences prefs = this.getSharedPreferences("AppPreferens",MODE_PRIVATE);
+        SharedPreferences.Editor editors = prefs.edit();
+        editors.putInt("Numstring",numpanel);
+        editors.apply();
+    }
+    static public int getTopups(Context ctx) {
+        SharedPreferences prefs = ctx.getSharedPreferences("AppPreferens",MODE_PRIVATE);
+        //// TODO: change default value.
+        return prefs.getInt("Topups", 0);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.topup)
+        {
+            doChangeActivity(getApplicationContext(),Topup.class);
+        }
+        else if(id==R.id.home)
+        {
+            doChangeActivity(getApplicationContext(),MainActivity.class);
+        }
+        else if(id == R.id.Wallet)
+        {
+            doChangeActivity(getApplicationContext(),Wallet.class);
+        }
+        else if(id== R.id.logout)
+        {
+            SessionManager.with(getApplicationContext()).clearsession();
+            doChangeActivity(getApplicationContext(), AuthActivity.class);
+        }
+        return true;
+    }
 
 }

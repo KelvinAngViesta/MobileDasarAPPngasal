@@ -50,7 +50,6 @@ public class User {
         this.email = email;
     }
 
-
     public String getBio() {
         return bio;
     }
@@ -68,5 +67,6 @@ public class User {
     }
 
     public int getWallet(){return wallet;}
+    
     public void setWallet(int wallet){this.wallet = wallet;}
 }

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -18,9 +20,9 @@ import quewquewcrew.appngasal.model.session.SessionManager;
 
 import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivity;
 
-public class Komfirmasi extends AppCompatActivity {
+public class Komfirmasi extends AppCompatActivity implements View.OnClickListener {
     private Lapangan lapang;
-
+    Button btnpem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,15 @@ public class Komfirmasi extends AppCompatActivity {
 
         TextView harga = (TextView) findViewById(R.id.id_total_harga);
         harga.setText(String.valueOf(total));
+        TextView hargalaps = (TextView)findViewById(R.id.item_lapang_grid_harga);
+        hargalaps.setText(String.valueOf(lapang.getHarga()));
         TextView namalapang = (TextView) findViewById(R.id.item_lapang_grid_name);
         namalapang.setText(lapang.getNameLap());
+
+        btnpem = (Button)findViewById(R.id.btngtopem);
+
+        btnpem.setOnClickListener(this);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,4 +73,11 @@ public class Komfirmasi extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v== btnpem)
+        {
+            doChangeActivity(getApplicationContext(),Pembayaran.class);
+        }
+    }
 }
