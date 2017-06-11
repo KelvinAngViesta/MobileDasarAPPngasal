@@ -50,23 +50,26 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
 
 
         lapangans.clear();
-        Lapangan lapa = new Lapangan("The Kop","Jl.Krakatau No-32c","Baru","087749068666",100000);
+        Lapangan lapa = new Lapangan("The Kop","Jl.Hayam Wuruk No-322c","Baru","087749068666",100000,"Sintetis");
         lapa.setImg(R.drawable.lap1);
-        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Krakatau No 183c","Area","087749068666",50000);
-        lapb.setImg(R.drawable.lap1);
-        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Krakatau No 32c","Helvetia","087749068666",100000);
-        lapc.setImg(R.drawable.lap1);
-        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Krakatau No 32c","Sunggal","087749068666",100000);
-        lapd.setImg(R.drawable.lap1);
+        Lapangan lapb = new Lapangan("Mega Futsal","Jl.Thamrin No-183c","Area","087749068666",150000,"Keramik");
+        lapb.setImg(R.drawable.lapang1);
+        Lapangan lapc = new Lapangan("Maritim Futsal","Jl.Gaperta No-232c","Helvetia","087749068666",150000,"Keramik");
+        lapc.setImg(R.drawable.lapang2);
+        Lapangan lapd = new Lapangan("Abadi Futsal","Jl.Amal No-32c","Sunggal","087749068666",100000,"Sintetis");
+        lapd.setImg(R.drawable.lapang4);
+        Lapangan lape = new Lapangan("Citizen","Jln.Djuanda No-121","Polonia","087749068666",120000,"Semen");
+        lape.setImg(R.drawable.lapang5);
         lapangans.add(lapa);
         lapangans.add(lapb);
         lapangans.add(lapc);
         lapangans.add(lapd);
+        lapangans.add(lape);
 
 
-        User usera = new User("ucok","a@mobile.id","password");
+        User usera = new User("ucok","a@mobile.id","password",0,"087749068666");
         users.add(usera);
-        User userb = new User("palak","b@mobile.id","password");
+        User userb = new User("palak","b@mobile.id","password",0,"08779068666");
         users.add(userb);
 
 
@@ -88,6 +91,7 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(),1));
         adapter.setLapangans(Lapangan.lapangans);
+//        adapter.setUsers(User.users);
         rv.setAdapter(adapter);
         return _view;
     }

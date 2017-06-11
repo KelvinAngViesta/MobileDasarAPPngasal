@@ -37,17 +37,17 @@ public class MainActivity extends ParentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.topup)
-        {
-            doChangeActivity(getApplicationContext(),Topup.class);
-        }
-        else if(id==R.id.home)
+        if(id==R.id.home)
         {
             doChangeActivity(getApplicationContext(),MainActivity.class);
         }
+        else if(id == R.id.topup)
+        {
+            doChangeActivity(getApplication(),Topup.class);
+        }
         else if(id == R.id.Wallet)
         {
-            doChangeActivity(getApplicationContext(),Wallet.class);
+            doChangeActivity(getApplication(),Wallet.class);
         }
         else if(id== R.id.logout)
         {

@@ -1,6 +1,7 @@
 package quewquewcrew.appngasal.model.entity;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,13 +9,14 @@ import java.util.ArrayList;
  */
 
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String name;
     private String email;
     private String bio;
     private String password;
     private int wallet;
+    private String notel;
 
     public static int _id = 1;
 
@@ -22,10 +24,12 @@ public class User {
 
     public User() {}
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password,int wallet,String notel) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.wallet = wallet;
+        this.notel = notel;
         this.id = _id;
         _id++;
     }
@@ -69,4 +73,8 @@ public class User {
     public int getWallet(){return wallet;}
     
     public void setWallet(int wallet){this.wallet = wallet;}
+    public String getNotel(){return notel;}
+
+    public void setNotel(String notel){this.notel = notel;}
+
 }

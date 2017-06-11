@@ -1,5 +1,6 @@
 package quewquewcrew.appngasal.view.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.support.annotation.StringDef;
@@ -23,23 +24,41 @@ import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivi
 public class Komfirmasi extends AppCompatActivity implements View.OnClickListener {
     private Lapangan lapang;
     Button btnpem;
-
+    String tgl;
+    int total,waktu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lapang = (Lapangan) getIntent().getExtras().get("Lapangan");
         setContentView(R.layout.activity_komfirmasi);
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("loading ...");
+        progress.show();
+
+        Thread _thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(2000);
+                    progress.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        _thread.start();
         Intent i = getIntent();
 
+        tgl = i.getExtras().getString("Tanggal");
         TextView tanggal = (TextView) findViewById(R.id.id_tanggal_booking);
-        tanggal.setText(i.getExtras().getString("Tanggal"));
+        tanggal.setText(tgl);
 
-        float waktu = i.getFloatExtra("Jam",0f);
+        waktu = i.getIntExtra("Jam",0);
         TextView waktu1 = (TextView)findViewById(R.id.id_waktu_booking);
         waktu1.setText(String.valueOf(waktu)+" " + "JAM");
 
         int hargalap = lapang.getHarga();
-        double total = waktu * hargalap;
+        total = waktu * hargalap;
 
         TextView harga = (TextView) findViewById(R.id.id_total_harga);
         harga.setText(String.valueOf(total));
@@ -62,9 +81,9 @@ public class Komfirmasi extends AppCompatActivity implements View.OnClickListene
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.topup) {
-            doChangeActivity(getApplicationContext(),Topup.class);
+            doChangeActivity(getApplication(),Topup.class);
         } else if (id == R.id.home) {
-            doChangeActivity(getApplicationContext(), MainActivity.class);
+            doChangeActivity(getApplication(), MainActivity.class);
         }
         else if (id == R.id.logout) {
             SessionManager.with(getApplicationContext()).clearsession();
@@ -77,7 +96,12 @@ public class Komfirmasi extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         if(v== btnpem)
         {
-            doChangeActivity(getApplicationContext(),Pembayaran.class);
+            Intent _intent = new Intent(v.getContext(),Pembayaran.class);
+            _intent.putExtra("Pembayaran",total);
+            _intent.putExtra("Waktu",waktu);
+            _intent.putExtra("Lapangan",lapang);
+            _intent.putExtra("Tanggal",tgl);
+            v.getContext().startActivity(_intent);
         }
     }
 }

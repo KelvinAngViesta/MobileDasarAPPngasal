@@ -1,6 +1,7 @@
 package quewquewcrew.appngasal.view.activity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +32,8 @@ import java.util.List;
 
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
+import quewquewcrew.appngasal.model.entity.User;
+import quewquewcrew.appngasal.model.session.SessionManager;
 
 public class DetailLapangan extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,11 +41,29 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
     EditText etextdate, etexttimestart, etexttimestop;
     private int day, month, year, hours, minute;
     private Lapangan lapangs;
+    private User users;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lapangs = (Lapangan)getIntent().getExtras().get("Lapangan");
         setContentView(R.layout.activity_detail_lapangan);
+        users = SessionManager.with(getApplicationContext()).getuserloggedin();
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("loading ...");
+        progress.show();
+
+        Thread _thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(2000);
+                    progress.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        _thread.start();
 
         TextView namalapang = (TextView) findViewById(R.id.item_lapang_grid_name);
         namalapang.setText(lapangs.getNameLap());
@@ -54,6 +75,10 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         noHp.setText(lapangs.getNotel());
         TextView harga = (TextView)findViewById(R.id.item_lapang_grid_harga);
         harga.setText(String.valueOf(lapangs.getHarga()));
+        TextView jenis = (TextView)findViewById(R.id.jenis);
+        jenis.setText(lapangs.getJenis());
+        ImageView image = (ImageView)findViewById(R.id.item_lapang_grid_image);
+        image.setImageResource(lapangs.getImg());
 
         //btn date
         btndate = (Button)findViewById(R.id.btndate);
@@ -177,7 +202,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
                  else
                  {
                      String tanggal = etextdate.getText().toString();
-                     float jam = toHour(ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString()));
+                     int jam = toHour(ConvertTime(etexttimestop.getText().toString())-ConvertTime(etexttimestart.getText().toString()));
 
                      Intent _intent = new Intent(view.getContext(),Komfirmasi.class);
                      _intent.putExtra("Lapangan",lapangs);
@@ -202,10 +227,10 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         return Jamkedetik + Menitkedetik;
     }
 
-    public static float toHour(int s) {
+    public static int toHour(int s) {
 
         int detik = s;
-        return (float)detik / 3600;
+        return detik / 3600;
     }
 
     public int ConvertTime(String s)

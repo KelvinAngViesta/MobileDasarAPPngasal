@@ -80,7 +80,8 @@ public class RegisterFragment extends Fragment {
                 register_email.setErrorEnabled(false);
                 register_password.setErrorEnabled(false);
                 register_repassword.setErrorEnabled(false);
-
+                int wall = 0;
+                String notel="";
                 if (TextUtils.isEmpty(et_name.getText())) {
                     _isvalid = false;
                     register_name.setErrorEnabled(true);
@@ -118,7 +119,7 @@ public class RegisterFragment extends Fragment {
                 }
 
                 if (_isvalid) {
-                    User userNew = new User(et_name.getText().toString(), et_email.getText().toString(), et_password.getText().toString());
+                    User userNew = new User(et_name.getText().toString(), et_email.getText().toString(), et_password.getText().toString(),wall,notel);
                     User.users.add(userNew);
                     ((AuthActivity) getActivity()).changefragment(new LoginFragment());
                 }

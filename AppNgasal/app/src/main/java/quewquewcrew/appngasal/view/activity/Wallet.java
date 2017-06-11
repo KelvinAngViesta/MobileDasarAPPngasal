@@ -1,40 +1,45 @@
 package quewquewcrew.appngasal.view.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import quewquewcrew.appngasal.R;
-import quewquewcrew.appngasal.model.entity.Topups;
+import quewquewcrew.appngasal.model.entity.User;
+import quewquewcrew.appngasal.model.session.SessionManager;
 
 import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivity;
 
 public class Wallet extends AppCompatActivity implements View.OnClickListener {
-    private Topups tops;
+    private User users;
     Button btntops;
+    TextView txthome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
-        Intent intents = getIntent();
-        int wallets = intents.getIntExtra("Topups",0);
+        users = SessionManager.with(getApplicationContext()).getuserloggedin();
         TextView txtwallet = (TextView)findViewById(R.id.txtwallet);
-        txtwallet.setText(String.valueOf(wallets));
+        txtwallet.setText(String.valueOf(users.getWallet()));
         //setbuttontops
         btntops= (Button)findViewById(R.id.btntop);
         btntops.setOnClickListener(this);
-
+        txthome = (TextView)findViewById(R.id.home);
+        txthome.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
         if(v==btntops)
         {
-            doChangeActivity(getApplicationContext(),Topup.class);
+            doChangeActivity(getApplication(),Topup.class);
+        }
+        else if(v==txthome)
+        {
+            doChangeActivity(getApplication(),MainActivity.class);
         }
     }
 }

@@ -17,15 +17,17 @@ public class Lapangan implements Serializable{
     private String alamat;
     private String kecamatan;
     private String notel;
+    private String jenis;
     private int img;
     public int harga;
     public static ArrayList<Lapangan> lapangans = new ArrayList<>();
-    public Lapangan(String namalapan, String alamat, String kecamatan,String notel,int harga) {
+    public Lapangan(String namalapan, String alamat, String kecamatan,String notel,int harga,String jenis) {
         this.namalapan = namalapan;
         this.alamat = alamat;
         this.kecamatan = kecamatan;
         this.notel = notel;
         this.harga = harga;
+        this.jenis = jenis;
     }
     public int getIdLap() {
         return idLap;
@@ -65,4 +67,6 @@ public class Lapangan implements Serializable{
 
     public int getImg(){return img;}
     public void setImg(int img) {this.img = img;}
+    public String getJenis(){return jenis;}
+    public void setJenis(String jenis){this.jenis = jenis;}
 }

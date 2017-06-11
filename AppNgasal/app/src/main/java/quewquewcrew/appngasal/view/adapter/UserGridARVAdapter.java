@@ -16,9 +16,11 @@ import org.w3c.dom.Text;
 
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
+import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.view.activity.DetailLapangan;
 import quewquewcrew.appngasal.view.activity.Komfirmasi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -37,7 +39,6 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.lapangans = lapangans;
     }
     String srch = "";
-    ArrayList<Lapangan> Nlapangan;
     public Context context;
     public UserGridARVAdapter(List<Lapangan> lapangans,Context context)
     {
@@ -87,7 +88,7 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         _holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent _intent = new Intent(v.getContext(), DetailLapangan.class);;
+                Intent _intent = new Intent(v.getContext(), DetailLapangan.class);
                 _intent.putExtra("Lapangan", _lapang);
                 v.getContext().startActivity(_intent);
             }
@@ -118,6 +119,8 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
     }
+
+    ArrayList<Lapangan> Nlapangan;
     public void setFilter(List<Lapangan> countryModels) {
         Nlapangan = new ArrayList<>();
         Nlapangan.addAll(countryModels);
