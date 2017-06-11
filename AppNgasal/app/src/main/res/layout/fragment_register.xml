@@ -21,7 +21,7 @@
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="55dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/logoappngasal" />
@@ -41,13 +41,13 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="-33dp"
-                        android:layout_marginLeft="22dp"
+                        android:layout_marginLeft="40dp"
                         android:src="@mipmap/man"
                         />
                     <EditText
                         android:id="@+id/register.name"
                         android:layout_width="285dp"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginLeft="85dp"
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:hint="Name"
@@ -68,13 +68,13 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="-33dp"
-                        android:layout_marginLeft="22dp"
+                        android:layout_marginLeft="40dp"
                         android:src="@mipmap/emailicons"
                         />
                     <EditText
                         android:id="@+id/register.email"
                         android:layout_width="285dp"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginLeft="85dp"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
                         android:hint="Email"
@@ -95,13 +95,13 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="-33dp"
-                        android:layout_marginLeft="22dp"
+                        android:layout_marginLeft="40dp"
                         android:src="@mipmap/passwordicon"
                         />
                     <EditText
                         android:id="@+id/register.password"
                         android:layout_width="285dp"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginLeft="85dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:hint="Password"
@@ -122,14 +122,14 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="-43dp"
-                        android:layout_marginLeft="22dp"
+                        android:layout_marginLeft="40dp"
                         android:src="@mipmap/passwordicon"
                         />
                     <EditText
                         android:id="@+id/register.repassword"
                         android:layout_width="285dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginLeft="85dp"
                         android:inputType="textPassword"
                         android:hint="Re-Password"
                         android:textSize="15dp"
@@ -145,9 +145,9 @@
                     android:orientation="vertical">
                 <Button
                     android:id="@+id/register.register"
-                    android:layout_width="320dp"
+                    android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_margin="10dp"
                     android:textAlignment="center"
                     android:background="#DEA717"
                     android:textColor="#FFFFFF"

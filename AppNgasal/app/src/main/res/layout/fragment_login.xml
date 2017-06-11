@@ -22,7 +22,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="70dp"
-                android:layout_marginLeft="55dp"
+                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/logoappngasal" />
                     <android.support.design.widget.TextInputLayout
@@ -33,14 +33,14 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_marginTop="-36dp"
-                            android:layout_marginLeft="22dp"
+                            android:layout_marginLeft="40dp"
                             android:src="@mipmap/emailicons"
                             />
                         <EditText
                             android:id="@+id/login.email"
                             android:layout_width="285dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="55dp"
+                            android:layout_marginLeft="85dp"
                             android:hint="Email"
                             android:inputType="textEmailAddress"/>
                     </android.support.design.widget.TextInputLayout>
@@ -48,13 +48,13 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="25dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="40dp"
                         android:src="@mipmap/passwordicon"
                         />
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/login.password.container"
                         android:layout_width="285dp"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginLeft="85dp"
                         android:layout_marginTop="-55dp"
                         android:layout_marginBottom="10dp"
                         app:passwordToggleEnabled="true"
@@ -73,19 +73,20 @@
 
                     <Button
                         android:id="@+id/login.login"
-                        android:layout_width="320dp"
+                        android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:text="Login"
                         android:textStyle="bold"
                         android:background="#dea717"
                         android:gravity="center"
-                        android:layout_marginLeft="20dp"
+                        android:layout_margin="10dp"
                         android:textColor="@android:color/background_light"
                         android:fontFamily="sans-serif" />
                     <TextView
                         android:id="@+id/login.register"
                         android:layout_width="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:gravity="center"
                         android:text="R E G I S T E R - H E R E"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"
