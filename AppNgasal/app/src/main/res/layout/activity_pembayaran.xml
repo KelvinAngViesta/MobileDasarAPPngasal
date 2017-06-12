@@ -79,7 +79,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-15dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="12dp">
             <TextView
                 android:text="Nama"
@@ -115,13 +115,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-15dp"
+
                 android:layout_marginTop="11dp">
                 <TextView
                     android:text="Tanggal"
                     android:textAllCaps="true"
                     android:id="@+id/tglsewa"
                     android:textSize="18sp"
+                    android:layout_marginLeft="5dp"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -148,15 +149,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
-                android:layout_marginTop="-42dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="-45dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/waktusewa"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="23dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginTop="13dp"
                     android:gravity="right"
                     android:text="Ja"
@@ -167,7 +168,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="43dp"
+                    android:layout_marginLeft="48dp"
                     android:layout_marginTop="-21dp"
                     android:gravity="left"
                     android:text="JAM"
@@ -196,7 +197,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="150dp"
                 android:layout_marginTop="-42dp"
                 android:orientation="vertical">
 
@@ -216,7 +217,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginLeft="60dp"
-                    android:layout_marginTop="-21dp"
+                    android:layout_marginTop="-22.3dp"
                     android:gravity="left"
                     android:text="Harga"
                     android:textSize="18sp"
@@ -242,7 +243,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="150dp"
                 android:layout_marginTop="-42dp"
                 android:orientation="vertical">
 
@@ -262,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginLeft="60dp"
-                    android:layout_marginTop="-21dp"
+                    android:layout_marginTop="-22.5dp"
                     android:gravity="left"
                     android:text="Harga"
                     android:textSize="18sp"

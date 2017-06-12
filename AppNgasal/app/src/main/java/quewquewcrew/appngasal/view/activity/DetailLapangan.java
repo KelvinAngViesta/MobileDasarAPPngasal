@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.media.Image;
 import android.os.Build;
@@ -29,12 +30,14 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.session.SessionManager;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class DetailLapangan extends AppCompatActivity implements View.OnClickListener {
 
     Button btndate, btntimestart, btntimestop, btnbook;
@@ -125,23 +128,33 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
+    Calendar calender = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener(){
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            calender.set(Calendar.YEAR, year);
+            calender.set(Calendar.MONTH, month);
+            calender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+    //set date in textview
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabel() {
+        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        etextdate.setText(sdf.format(calender.getTime()));
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         if (v == btndate) {
-            final Calendar calender = Calendar.getInstance();
-            day = calender.get(Calendar.DAY_OF_MONTH);
-            month = calender.get(Calendar.MONTH);
-            year = calender.get(Calendar.YEAR);
-            DatePickerDialog datepickerdialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    etextdate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                }
-            }
-                    , day, month, year);
-
-            datepickerdialog.show();
+            new DatePickerDialog(DetailLapangan.this, date,calender.get(Calendar.YEAR), calender.get(Calendar.MONTH),
+                    calender.get(Calendar.DAY_OF_MONTH)).show();
         }
         if (v == btntimestart) {
             final Calendar calendar = Calendar.getInstance();
