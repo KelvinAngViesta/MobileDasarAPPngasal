@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import quewquewcrew.appngasal.R;
@@ -16,13 +18,17 @@ import quewquewcrew.appngasal.model.session.SessionManager;
 import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivity;
 
 public class Topup extends AppCompatActivity {
-private User users;
-
+    private User users;
+    TextView jlhtops,reset;
+    Button btntops;
+    int hasil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup);
         final ProgressDialog progress = new ProgressDialog(this);
+        jlhtops =(TextView) findViewById(R.id.txtjlhtop);
+        jlhtops.setText("0");
         progress.setMessage("loading ...");
         progress.show();
         Thread _thread = new Thread() {
@@ -38,6 +44,9 @@ private User users;
         };
         _thread.start();
         createRadioButtons();
+        btntops = (Button)findViewById(R.id.btntop);
+        reset = (TextView)findViewById(R.id.reset);
+        event();
     }
 
     private void createRadioButtons() {
@@ -57,25 +66,59 @@ private User users;
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(Topup.this,"Click" + numpanel ,Toast.LENGTH_SHORT).show();
-                    users = SessionManager.with(getApplicationContext()).getuserloggedin();
-                    int temp = users.getWallet();
-                    int tambah = temp + numpanel;
-                    users.setWallet(tambah);
-                    SessionManager sessionManager = SessionManager.with(getApplicationContext());
-                    sessionManager.createsession(users);
-                    Toast.makeText(Topup.this,"Berhasil Top-up Sebesar " + numpanel ,Toast.LENGTH_SHORT).show();
-                    doChangeActivity(getApplicationContext(),MainActivity.class);
-                }
+                    int temp = Integer.parseInt(jlhtops.getText().toString());
+                    int num = numpanel;
+                    hasil = num + temp;
+
+
+                    jlhtops.setText(String.valueOf(hasil));
+            }
 
 
             });
 
-            //Add to radiogroup:
             group.addView(btn);
+            //Add to radiogroup:
             //Select default button:
         }
 
+    }
+
+    private void event()
+    {
+
+        btntops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(jlhtops.getText().toString().matches("0"))
+            {
+                Toast.makeText(Topup.this,"Topup masih Kosong" ,Toast.LENGTH_SHORT).show();
+            }
+            else if(jlhtops != null)
+            {
+                users = SessionManager.with(getApplicationContext()).getuserloggedin();
+                int temp = users.getWallet();
+                int tambah = temp+hasil;
+                users.setWallet(tambah);
+                SessionManager sessionManager = SessionManager.with(getApplicationContext());
+                sessionManager.createsession(users);
+                Toast.makeText(Topup.this,"Berhasil Top-up Sebesar " + hasil ,Toast.LENGTH_SHORT).show();
+                doChangeActivity(getApplicationContext(),MainActivity.class);
+            }
+            else
+            {
+                Toast.makeText(Topup.this,"Silakan Memilih Top-up terlebih dahulu " ,Toast.LENGTH_SHORT).show();
+            }
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jlhtops.setText("0");
+                hasil = 0;
+
+            }
+        });
     }
 
     @Override

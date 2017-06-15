@@ -63,7 +63,7 @@ public class UserGridARVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         _holder.image.setImageResource(_lapang.getImg());
         _holder.name.setText(_lapang.getNameLap());
         _holder.harga.setText(String.valueOf(_lapang.getHarga()));
-        _holder.namalap.setText(String.valueOf(_lapang.getKecamatan()));
+        _holder.namalap.setText(_lapang.getKecamatan());
         ///Search
         Lapangan txt = lapangans.get(position);
         String nama = txt.getNameLap().toLowerCase(Locale.getDefault());

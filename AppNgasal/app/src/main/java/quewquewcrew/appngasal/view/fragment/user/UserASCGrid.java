@@ -67,9 +67,9 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
         lapangans.add(lape);
 
 
-        User usera = new User("ucok","a@mobile.id","password",0,"087749068666");
+        User usera = new User("ucok","a@mobile.id","password",0,"087749068666","Jln.Karya No-30");
         users.add(usera);
-        User userb = new User("palak","b@mobile.id","password",0,"08779068666");
+        User userb = new User("palak","b@mobile.id","password",0,"08779068666","Jln Razak No-40");
         users.add(userb);
 
 
@@ -142,7 +142,7 @@ public class UserASCGrid extends Fragment implements SearchView.OnQueryTextListe
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
         TextView searchText = (TextView)
-                searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         searchText.setHint("Search Lapangan Atau Kecamatan...");
         searchView.setOnQueryTextListener(this);
 

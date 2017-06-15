@@ -10,6 +10,7 @@ import android.view.View;
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.session.SessionManager;
 import quewquewcrew.appngasal.view.fragment.user.UserASCGrid;
+import quewquewcrew.appngasal.view.fragment.user.reportpesanan;
 
 
 public class MainActivity extends ParentActivity {
@@ -41,9 +42,16 @@ public class MainActivity extends ParentActivity {
         {
             doChangeActivity(getApplicationContext(),MainActivity.class);
         }
+        else if(id==R.id.editpro){
+            doChangeActivity(getApplicationContext(),EditProfil.class);
+        }
         else if(id == R.id.topup)
         {
             doChangeActivity(getApplication(),Topup.class);
+        }
+        else if (id == R.id.report)
+        {
+            this.changefragment(new reportpesanan());
         }
         else if(id == R.id.Wallet)
         {

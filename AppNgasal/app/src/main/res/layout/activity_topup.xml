@@ -25,4 +25,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
+        <TextView
+            android:id="@+id/txtjlhtop"
+            android:layout_marginTop="300dp"
+            android:text="JUMLAH TOP UP"
+            android:gravity="center"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btntop"
+            android:layout_marginTop="350dp"
+            android:layout_width="match_parent"
+            android:background="#DEA717"
+            android:text="top-up"
+            android:textAllCaps="true"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/reset"
+            android:layout_marginTop="410dp"
+            android:layout_width="match_parent"
+            android:text="R e s e t"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
 </RelativeLayout>

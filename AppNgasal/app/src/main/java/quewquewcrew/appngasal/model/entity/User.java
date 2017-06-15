@@ -16,7 +16,7 @@ public class User implements Serializable {
     private String bio;
     private String password;
     private int wallet;
-    private String notel;
+    private String notel,alamat;
 
     public static int _id = 1;
 
@@ -24,8 +24,9 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(String name, String email, String password,int wallet,String notel) {
+    public User(String name, String email, String password,int wallet,String notel,String alamat) {
         this.name = name;
+        this.alamat = alamat;
         this.email = email;
         this.password = password;
         this.wallet = wallet;
@@ -76,5 +77,13 @@ public class User implements Serializable {
     public String getNotel(){return notel;}
 
     public void setNotel(String notel){this.notel = notel;}
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.name = alamat;
+    }
 
 }

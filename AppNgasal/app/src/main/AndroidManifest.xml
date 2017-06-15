@@ -25,7 +25,9 @@
         <activity android:name=".view.activity.Topup" />
         <activity android:name=".view.activity.Wallet" />
         <activity android:name=".view.activity.ParentActivity" />
-        <activity android:name=".view.activity.Pembayaran"></activity>
+        <activity android:name=".view.activity.Pembayaran" />
+        <activity android:name=".view.activity.EditProfil" />
+        <activity android:name=".view.activity.EditProfilv2"></activity>
     </application>
 
 </manifest>
