@@ -15,7 +15,7 @@
         android:title="Edit Profil"
         android:id="@+id/editpro"/>
     <item
-        android:title="Report"
+        android:title="History"
         android:id="@+id/report"/>
     <item
         android:id="@+id/topup"
