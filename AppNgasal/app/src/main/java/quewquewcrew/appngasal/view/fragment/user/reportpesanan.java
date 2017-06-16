@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import quewquewcrew.appngasal.R;
+import quewquewcrew.appngasal.model.entity.History;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.view.activity.ParentActivity;
@@ -28,6 +29,7 @@ import quewquewcrew.appngasal.view.adapter.ReportLapanganAdapter;
 public class reportpesanan extends Fragment {
     private RecyclerView rv;
     private ReportLapanganAdapter adapter;
+
     public reportpesanan() {
         // Required empty public constructor
     }
@@ -42,10 +44,7 @@ public class reportpesanan extends Fragment {
         rv =(RecyclerView)_view.findViewById(R.id.userdetailpesanan);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.getLapangans(Lapangan.lapangans);
-        adapter.getUsers(User.users);
-//        adapter.getUsers().size();
-//        adapter.getLapangans().size();
+        adapter.setHistory(History.History);
         rv.setAdapter(adapter);
         return _view;
     }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import quewquewcrew.appngasal.R;
+import quewquewcrew.appngasal.model.entity.History;
 import quewquewcrew.appngasal.model.entity.Lapangan;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.session.SessionManager;
@@ -27,7 +28,9 @@ public class Pembayaran extends AppCompatActivity  {
     String tgl;
     TextView txtwallet;
     TextView txtsaldoakhirs;
-    Button btnbyr;
+    TextView username , namalap;
+    ImageView image;
+    Button btnbyr,btnCancel;
     private Lapangan lapang;
 
 
@@ -54,13 +57,13 @@ public class Pembayaran extends AppCompatActivity  {
         Intent i = getIntent();
         //setlapangan item
         lapang = (Lapangan) getIntent().getExtras().get("Lapangan");
-        ImageView image = (ImageView)findViewById(R.id.pemimage);
+        image = (ImageView)findViewById(R.id.pemimage);
         image.setImageResource(lapang.getImg());
-        TextView namalap = (TextView)findViewById(R.id.namalap);
+        namalap = (TextView)findViewById(R.id.namalap);
         namalap.setText(lapang.getNameLap());
         users = SessionManager.with(getApplicationContext()).getuserloggedin();
         //setuser item
-        TextView username = (TextView)findViewById(R.id.namasewa);
+        username = (TextView)findViewById(R.id.namasewa);
         username.setText(users.getName());
 
         //setwaktu
@@ -82,7 +85,7 @@ public class Pembayaran extends AppCompatActivity  {
 
 
         btnbyr= (Button)findViewById(R.id.bayar);
-
+        btnCancel = (Button) findViewById(R.id.btnCancel);
         event();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -116,11 +119,24 @@ public class Pembayaran extends AppCompatActivity  {
                 int wallets = users.getWallet();
                 akhir = wallets-total;
                 users.setWallet(akhir);
+
+                String uname = username.getText().toString();
+
+                String nlap = namalap.getText().toString();
+
+                String kec = lapang.getKecamatan().toString();
+
+                String status = "SUKSES";
+
+                int harga = total;
+
+                History historynew = new History(nlap,uname,kec,status,harga,lapang.getImg());
+                History.History.add(historynew);
+
                 SessionManager sessionManager = SessionManager.with(getApplicationContext());
                 sessionManager.createsession(users);
                 Toast.makeText(Pembayaran.this,"Berhasil Pembayaran",Toast.LENGTH_LONG).show();
                 doChangeActivity(getApplication(),MainActivity.class);
-
             }
             else
             {
@@ -131,5 +147,22 @@ public class Pembayaran extends AppCompatActivity  {
 
             }
         });
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                String uname = username.getText().toString();
+                String nlap = namalap.getText().toString();
+                String kec = lapang.getKecamatan().toString();
+                String status = "BATAL";
+                int harga = total;
+                History historynew = new History(nlap,uname,kec,status,harga,lapang.getImg());
+                History.History.add(historynew);
+                SessionManager sessionManager = SessionManager.with(getApplicationContext());
+                sessionManager.createsession(users);
+                doChangeActivity(getApplication(),MainActivity.class);
+            }
+        });
+
         }
 }

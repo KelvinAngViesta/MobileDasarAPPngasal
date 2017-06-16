@@ -296,11 +296,19 @@
 
                 <Button
                     android:id="@+id/bayar"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="#dea717"
                     android:text="Bayar"
                     android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="#dea717"
+                    android:layout_marginLeft="30px"
+                    android:text="Cancel"
+                    android:textColor= "#f00"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
