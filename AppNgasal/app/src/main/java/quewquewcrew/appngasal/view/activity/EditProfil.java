@@ -2,6 +2,8 @@ package quewquewcrew.appngasal.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +18,6 @@ import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivi
 public class EditProfil extends AppCompatActivity implements View.OnClickListener {
     public User users;
     TextView txtusername;
-    ImageView imgupdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,26 @@ public class EditProfil extends AppCompatActivity implements View.OnClickListene
         txtemail.setText(users.getEmail());
 
         txtusername.setOnClickListener(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                doChangeActivity(getApplicationContext(),MainActivity.class);
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

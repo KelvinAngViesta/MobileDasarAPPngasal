@@ -4,6 +4,8 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,8 +44,28 @@ public class EditProfilv2 extends AppCompatActivity {
         Btnedit = (Button) findViewById(R.id.btnedtxt);
 
         event();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                doChangeActivity(getApplicationContext(),EditProfil.class);
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     private void event() {
         Btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +82,14 @@ public class EditProfilv2 extends AppCompatActivity {
                     istrue = false;
                     tipname.setErrorEnabled(true);
                     tipname.setError("Nama Tidak boleh Kosong");
-                } else if (!AuthActivity.isemailvalid(edtxtemail.getText().toString())) {
+                }
+                else if(edtxtname.getText().length() < 7)
+                {
+                    istrue = false;
+                    tipname.setErrorEnabled(true);
+                    tipname.setError("Nama Minimal 7 Karakter");
+                }
+                else if (!AuthActivity.isemailvalid(edtxtemail.getText().toString())) {
                     istrue = false;
                     tipemail.setErrorEnabled(true);
                     tipemail.setError("Email Tidak Boleh Kosong");
@@ -68,7 +97,14 @@ public class EditProfilv2 extends AppCompatActivity {
                     istrue = false;
                     tiphp.setErrorEnabled(true);
                     tiphp.setError("Hp Tidak Boleh Kosong");
-                } else if (TextUtils.isEmpty(edtxtalamat.getText())) {
+                }
+                else if (edtxtnohp.getText().length() <=11)
+                {
+                    istrue = false;
+                    tiphp.setErrorEnabled(true);
+                    tiphp.setError("No Handphone Minimal 11 Angka");
+                }
+                else if (TextUtils.isEmpty(edtxtalamat.getText())) {
                     istrue = false;
                     tipalamat.setErrorEnabled(true);
                     tipalamat.setError("Alamat Tidak Boleh Kosong");
