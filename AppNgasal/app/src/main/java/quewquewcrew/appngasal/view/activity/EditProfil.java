@@ -78,7 +78,7 @@ public class EditProfil extends AppCompatActivity implements View.OnClickListene
         pieChart.setTransparentCircleRadius(25f);
         pieChart.setHoleRadius(25f);
 
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         data.setValueTextSize(13f);
         data.setValueTextColor(Color.DKGRAY);
         pieChart.setOnChartValueSelectedListener(this);
