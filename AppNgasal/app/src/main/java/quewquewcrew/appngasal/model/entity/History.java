@@ -17,6 +17,8 @@ public class History implements Serializable{
     private int gambarLap;
     private int harga;
     public static int _id = 1;
+    public static int idcancel =0;
+    public static int idok = 0;
     public static ArrayList<History> History = new ArrayList<>();
     public History(String namalapan, String namaPemesan, String kecamatan,String status,int harga, int gambar) {
         this.namaLap = namalapan;

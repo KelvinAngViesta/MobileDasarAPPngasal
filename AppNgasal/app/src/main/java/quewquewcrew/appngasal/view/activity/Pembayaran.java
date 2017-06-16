@@ -131,6 +131,7 @@ public class Pembayaran extends AppCompatActivity  {
                 int harga = total;
 
                 History historynew = new History(nlap,uname,kec,status,harga,lapang.getImg());
+                historynew.idok++;
                 History.History.add(historynew);
 
                 SessionManager sessionManager = SessionManager.with(getApplicationContext());
@@ -157,6 +158,7 @@ public class Pembayaran extends AppCompatActivity  {
                 String status = "BATAL";
                 int harga = total;
                 History historynew = new History(nlap,uname,kec,status,harga,lapang.getImg());
+                historynew.idcancel++;
                 History.History.add(historynew);
                 SessionManager sessionManager = SessionManager.with(getApplicationContext());
                 sessionManager.createsession(users);
