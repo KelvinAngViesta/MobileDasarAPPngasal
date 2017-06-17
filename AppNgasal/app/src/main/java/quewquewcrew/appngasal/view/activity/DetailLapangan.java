@@ -111,6 +111,8 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        this.setTitle(lapangs.getNameLap());
     }
 
     @Override
@@ -242,6 +244,7 @@ public class DetailLapangan extends AppCompatActivity implements View.OnClickLis
     String dateString = sdf.format(data);
     SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
     String timeSekarang = sdf1.format(calender.getTime());
+
 
     private void event()
     {

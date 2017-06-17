@@ -7,59 +7,73 @@
     android:orientation="vertical"
     tools:context="quewquewcrew.appngasal.view.activity.DetailLapangan">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#FFFF"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/border"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-
                     <ImageView
                         android:id="@+id/item.lapang.grid.image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/lap1" />
-                </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="360dp"
+                    android:layout_marginTop="-50dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:paddingTop="-5dp"
+                    android:background="#fafafa"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="180dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/item.lapang.grid.name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Your Name"
+                            android:layout_marginTop="5dp"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="120dp"
+                            android:layout_marginTop="3dp"
+                            android:gravity="right"
+                            android:text="RP."
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/item.lapang.grid.harga"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:text="Your Name"
+                            android:gravity="left"
+                            android:layout_marginTop="3dp"
+                            android:text="Harga"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@drawable/border"></View>
                         <TextView
                             android:id="@+id/item.lapang.grid.alamat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
                             android:gravity="left"
                             android:text="Alamat"
                             android:textSize="12sp" />
@@ -68,9 +82,22 @@
                             android:id="@+id/item.lapang.grid.kecamatan"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
                             android:gravity="left"
                             android:text="Kecamatan"
                             android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/jenis"
+                            android:layout_width="200dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_height="wrap_content"
+                            android:text="Jenis"
+                            android:layout_marginBottom="5dp"/>
+                    <LinearLayout
+                        android:layout_width="90dp"
+                        android:layout_marginLeft="275dp"
+                        android:layout_marginTop="-20dp"
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/item.lapang.grid.notel"
@@ -80,68 +107,43 @@
                             android:text="No Handphone"
                             android:textSize="12sp" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="180dp"
-                        android:layout_marginTop="-65dp"
-                        android:layout_marginBottom="3dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="3dp"
-                            android:gravity="right"
-                            android:text="RP."
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/item.lapang.grid.harga"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginTop="-23dp"
-                            android:gravity="right"
-                            android:text="Harga"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="90dp"
-                        android:layout_marginLeft="210dp"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/jenis"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Jenis"/>
-                    </LinearLayout>
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Booking Here"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="24dp"/>
             </LinearLayout>
-
+            <View
+                android:layout_width="150dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border"></View>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="-8dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    >
 
                     <Button
                         android:id="@+id/btndate"
-                        android:layout_width="145dp"
+                        android:layout_width="135dp"
                         android:layout_height="40dp"
                         android:text="Date"
                         android:background="#dea717"
+                        android:layout_marginLeft="10dp"
                         android:textColor="#FFFFFF"
                         android:layout_marginBottom="4dp"
                         />
@@ -154,13 +156,15 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp">
 
                     <Button
                         android:id="@+id/btntimestrat"
-                        android:layout_width="145dp"
+                        android:layout_width="135dp"
                         android:layout_height="40dp"
                         android:text="Time Start"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginBottom="4dp"
                         android:background="#dea717"
                         android:textColor="#FFFFFF"/>
@@ -177,9 +181,10 @@
 
                     <Button
                         android:id="@+id/btntimestop"
-                        android:layout_width="145dp"
+                        android:layout_width="135dp"
                         android:layout_height="40dp"
                         android:text="Time Stop"
+                        android:layout_marginLeft="10dp"
                         android:background="#dea717"
                         android:textColor="#FFFFFF"/>
 
@@ -188,23 +193,19 @@
                         android:layout_width="250dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btnbooking"
+                        android:layout_marginLeft="240dp"
+                        android:layout_width="150dp"
+                        android:background="#dea717"
+                        android:textColor="#FFFFFF"
+                        android:text="Booking"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btnbooking"
-                android:layout_marginLeft="253dp"
-                android:layout_width="150dp"
-                android:background="#dea717"
-                android:textColor="#FFFFFF"
-                android:text="Booking"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
 
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 </LinearLayout>

@@ -28,9 +28,10 @@ public class Pembayaran extends AppCompatActivity  {
     String tgl;
     TextView txtwallet;
     TextView txtsaldoakhirs;
+    TextView btnCancel;
     TextView username , namalap;
     ImageView image;
-    Button btnbyr,btnCancel;
+    Button btnbyr;
     private Lapangan lapang;
 
 
@@ -85,10 +86,11 @@ public class Pembayaran extends AppCompatActivity  {
 
 
         btnbyr= (Button)findViewById(R.id.bayar);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnCancel = (TextView) findViewById(R.id.btnCancel);
         event();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        this.setTitle("Pembayaran");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,6 +118,7 @@ public class Pembayaran extends AppCompatActivity  {
             public void onClick(View view) {
             if(users.getWallet() >= total)
             {
+
                 int wallets = users.getWallet();
                 akhir = wallets-total;
                 users.setWallet(akhir);

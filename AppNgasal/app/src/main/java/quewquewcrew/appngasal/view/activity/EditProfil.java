@@ -59,15 +59,15 @@ public class EditProfil extends AppCompatActivity implements View.OnClickListene
         int oks = hitory.idok;
         int cancels = hitory.idcancel;
         ArrayList<Entry> yvalues = new ArrayList<Entry>();
-        yvalues.add(new Entry(oks, 0));
-        yvalues.add(new Entry(cancels, 1));
+        yvalues.add(new Entry(cancels, 0));
+        yvalues.add(new Entry(oks, 1));
 
-        PieDataSet dataSet = new PieDataSet(yvalues, "Election Results");
+        PieDataSet dataSet = new PieDataSet(yvalues, "Lapangan Booking Detail");
 
         ArrayList<String> xVals = new ArrayList<String>();
 
-        xVals.add("Deal");
         xVals.add("Cancel");
+        xVals.add("Deal");
 
         PieData data = new PieData(xVals, dataSet);
         data.setValueFormatter(new PercentFormatter());

@@ -70,30 +70,33 @@ public class Komfirmasi extends AppCompatActivity implements View.OnClickListene
         btnpem = (Button)findViewById(R.id.btngtopem);
 
         btnpem.setOnClickListener(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        this.setTitle("Konfirmasi");
+
 
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.topup) {
-            doChangeActivity(getApplication(),Topup.class);
-        } else if (id == R.id.home) {
-            doChangeActivity(getApplication(), MainActivity.class);
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
         }
-        else if (id == R.id.logout) {
-            SessionManager.with(getApplicationContext()).clearsession();
-            doChangeActivity(getApplicationContext(), AuthActivity.class);
-        }
-        return true;
-    }
 
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onClick(View v) {
         if(v== btnpem)

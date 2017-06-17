@@ -27,7 +27,9 @@
         <activity android:name=".view.activity.ParentActivity" />
         <activity android:name=".view.activity.Pembayaran" />
         <activity android:name=".view.activity.EditProfil" />
-        <activity android:name=".view.activity.EditProfilv2"></activity>
+        <activity android:name=".view.activity.EditProfilv2" />
+
+
     </application>
 
 </manifest>

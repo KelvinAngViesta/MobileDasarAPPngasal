@@ -47,6 +47,7 @@ public class EditProfilv2 extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        this.setTitle("Edit Profil");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

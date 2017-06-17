@@ -4,47 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="quewquewcrew.appngasal.view.activity.Pembayaran">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="-10dp"
-            android:background="@drawable/border"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/pemimage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/lap1" />
-
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-13dp"
-                android:background="@drawable/border">
+                android:layout_marginTop="-24dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/namalap"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:background="#dea717"
                     android:text="nama"
                     android:textAlignment="center"
                     android:textAllCaps="true"
@@ -62,92 +45,74 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/border">
-
-                <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical">
-
+                android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
                         android:layout_marginTop="10dp"
+                        android:textStyle="bold"
                         android:text="Nama Pemesan      :"
                         android:textSize="18sp" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="12dp">
-
                     <TextView
                         android:id="@+id/namasewa"
-                        android:layout_width="match_parent"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="Nama"
                         android:textAllCaps="true"
                         android:textSize="18sp"
+                        android:layout_gravity="bottom"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/border"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/border">
-
-                <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Tanggal Pemesan  :"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="11dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tglsewa"
-                        android:layout_width="match_parent"
+                        android:layout_width="180dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:text="Tanggal Pemesan  :"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tglsewa"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
                         android:text="Tanggal"
+                        android:layout_gravity="bottom"
                         android:textAllCaps="true"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-            </LinearLayout>
 
+            </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/border"></View>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/border"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
 
@@ -155,22 +120,12 @@
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="Jam Sewa              :"
+                        android:textStyle="bold"
                         android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="160dp"
-                    android:layout_marginTop="-45dp"
-                    android:orientation="vertical">
-
                     <TextView
                         android:id="@+id/waktusewa"
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="13dp"
                         android:gravity="right"
                         android:text="Ja"
                         android:textSize="18sp"
@@ -180,7 +135,7 @@
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:layout_marginLeft="48dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="-21dp"
                         android:gravity="left"
                         android:text="JAM"
@@ -189,38 +144,32 @@
                 </LinearLayout>
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="-10dp"
+                android:background="@drawable/border"></View>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/border"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Biaya Sewa            :"
-                        android:textSize="18sp" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="-42dp"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Biaya Sewa            :"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="12dp"
                         android:gravity="right"
                         android:text="RP."
                         android:textSize="18sp"
@@ -231,7 +180,6 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:layout_marginLeft="60dp"
                         android:layout_marginTop="-22.3dp"
                         android:gravity="left"
                         android:text="Harga"
@@ -239,37 +187,31 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="-10dp"
+                android:background="@drawable/border"></View>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Saku Anda             :"
-                        android:textSize="18sp" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="-42dp"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp">
 
+                    <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Saku Anda             :"
+                        android:textSize="18sp" />
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="12dp"
                         android:gravity="right"
                         android:text="RP."
                         android:textSize="18sp"
@@ -280,7 +222,6 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:layout_marginLeft="60dp"
                         android:layout_marginTop="-22.5dp"
                         android:gravity="left"
                         android:text="Harga"
@@ -292,24 +233,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/bayar"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#dea717"
                     android:text="Bayar"
+                    android:layout_marginBottom="5dp"
                     android:textColor="#FFFFFF" />
-                <Button
+                <TextView
                     android:id="@+id/btnCancel"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
                     android:layout_height="wrap_content"
-                    android:background="#dea717"
-                    android:layout_marginLeft="30px"
-                    android:text="Cancel"
-                    android:textColor= "#f00"/>
+                    android:text="Cancel"/>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>

@@ -1,6 +1,7 @@
 package quewquewcrew.appngasal.view.activity;
 
 import android.app.ProgressDialog;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import quewquewcrew.appngasal.R;
 import quewquewcrew.appngasal.model.entity.User;
 import quewquewcrew.appngasal.model.session.SessionManager;
+import quewquewcrew.appngasal.view.fragment.user.reportpesanan;
+
 import static quewquewcrew.appngasal.view.activity.ParentActivity.doChangeActivity;
 
 public class Topup extends AppCompatActivity {
@@ -47,6 +50,7 @@ public class Topup extends AppCompatActivity {
         btntops = (Button)findViewById(R.id.btntop);
         reset = (TextView)findViewById(R.id.reset);
         event();
+        this.setTitle("Topup");
     }
 
     private void createRadioButtons() {
@@ -130,13 +134,20 @@ public class Topup extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.topup)
+        if(id==R.id.home)
+        {
+            doChangeActivity(getApplicationContext(),MainActivity.class);
+        }
+        else if(id==R.id.editpro){
+            doChangeActivity(getApplicationContext(),EditProfil.class);
+        }
+        else if(id == R.id.topup)
         {
             doChangeActivity(getApplication(),Topup.class);
         }
-        else if(id==R.id.home)
+        else if (id == R.id.report)
         {
-            doChangeActivity(getApplication(),MainActivity.class);
+            this.changefragment(new reportpesanan());
         }
         else if(id == R.id.Wallet)
         {
@@ -150,4 +161,7 @@ public class Topup extends AppCompatActivity {
         return true;
     }
 
+    public void changefragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).commit();
+    }
 }
